@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title>Hello</title>
+    </head>
+    <body>
+        <h1>Welcome to Message Board </h1>
+        <form action = "/" method = "post">
+            <label for ="input_text"> Input your message </label>
+            <input id = "input_text" name = "input_text" type = "text">
+            <button type = "submit">Go!</button>
+        </form>
+
+        <form action = "/delete" method = "post">
+            <button type = "submit">Delete All Messages</button>
+        </form>
+        <p>Here are the messages </p>
+        <ul>
+        {% for message in messages %}
+        <li> {{ message.getText }} </li>
+
+        {% endfor %}
+    </ul>
+    </body>
+</html>
