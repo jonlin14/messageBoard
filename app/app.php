@@ -31,6 +31,23 @@
             return $app['twig']->render('message.html.twig', array ('messages' => Message::getAll()));
         });
 
+        $app->patch("/update/{id}", function($id) use ($app) {
+          $message = Message::find($id);
+          $message->update($_POST['new_text']);
+          return $app['twig']->render('message.html.twig', array ('messages' => Message::getAll()));
+        });
+
+        $app->get("/message/{id}", function($id) use($app) {
+          $message = Message::find($id);
+          return $app['twig']->render('message_edit.html.twig', array ('message' => $message));
+        });
+
+        $app->delete("/delete/{id}", function($id) use ($app) {
+          $message = Message::find($id);
+          $message->delete();
+          return $app['twig']->render('message.html.twig', array ('messages' => Message::getAll()));
+        });
+
         return $app;
 
  ?>

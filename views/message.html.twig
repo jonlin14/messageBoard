@@ -17,7 +17,10 @@
         <ul>
         {% for message in messages %}
         <li> {{ message.getText }} </li>
-
+        <form action = "/message/{{ message.getId }}">
+        <button type = "submit">Edit this Message </button>
+        </form>
+        </li>
         {% endfor %}
     </ul>
     </body>
